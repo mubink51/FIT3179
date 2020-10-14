@@ -18,32 +18,35 @@
           "url": "https://raw.githubusercontent.com/mubink51/FIT3179/main/mcdonalds_state_pop.csv"
         },
         "key": "state_name",
-        "fields": ["count_per_pop"]
+        "fields": ["count_per_pop", "count"]
       }
     },
-    {"calculate": "datum.count_per_pop", "as": "count"}
+    {"calculate": "datum.count_per_pop", "as": "count2"},
+    {"calculate": "datum.count", "as": "count"}
   ],
   "projection": {"type": "albersUSA"},
   "selection": {"picked": {"type": "single", "on": "mouseover"}},
-  "mark": {"type": "geoshape"},
+  "mark": {"type": "geoshape", "stroke": "white"},
   "encoding": {
     "color": {
       "condition": {
         "selection": "picked",
-        "field": "count",
+        "field": "count2",
         "type": "quantitative",
         "scale": {"type": "threshold", "domain": [10, 30, 40, 45, 50, 55]}
       },
       "value": "gray"
     },
+    "condition": {"selection": "picked", "stroke": "white"},
     "tooltip": [
       {"field": "properties.name", "type": "nominal", "title": "State"},
       {
-        "field": "count",
+        "field": "count2",
         "type": "quantitative",
         "title": "McDonalds per Million Residents",
         "format": ".2f"
-      }
+      },
+      {"field": "count", "type": "quantitative", "title": "Total McDonalds"}
     ]
   },
   "config": {}
