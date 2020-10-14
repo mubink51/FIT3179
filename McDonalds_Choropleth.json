@@ -24,16 +24,17 @@
     {"calculate": "datum.count_per_pop", "as": "count"}
   ],
   "projection": {"type": "albersUSA"},
-  "selection": {
-    "highlight": {"type": "single", "empty": "none", "on": "mouseover"},
-    "select": {"type": "multi"}
-  },
+  "selection": {"picked": {"type": "single", "on": "mouseover"}},
   "mark": {"type": "geoshape"},
   "encoding": {
     "color": {
-      "field": "count",
-      "type": "quantitative",
-      "scale": {"type": "threshold", "domain": [10, 30, 40, 45, 50, 55]}
+      "condition": {
+        "selection": "picked",
+        "field": "count",
+        "type": "quantitative",
+        "scale": {"type": "threshold", "domain": [10, 30, 40, 45, 50, 55]}
+      },
+      "value": "gray"
     },
     "tooltip": [
       {"field": "properties.name", "type": "nominal", "title": "State"},
