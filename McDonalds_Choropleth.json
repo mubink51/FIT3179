@@ -18,7 +18,7 @@
           "url": "https://raw.githubusercontent.com/mubink51/FIT3179/main/mcdonalds_state_pop.csv"
         },
         "key": "state_name",
-        "fields": ["count_per_pop", "count"]
+        "fields": ["count_per_pop", "count", "population"]
       }
     },
     {"calculate": "datum.count_per_pop", "as": "count2"},
@@ -33,11 +33,11 @@
         "selection": "picked",
         "field": "count2",
         "type": "quantitative",
-        "scale": {"type": "threshold", "domain": [10, 30, 40, 45, 50, 55]}
+        "scale": {"type": "threshold", "domain": [10, 30, 40, 45, 50, 55]},
+        "legend": {"title": "Count"}
       },
       "value": "gray"
     },
-    "condition": {"selection": "picked", "stroke": "white"},
     "tooltip": [
       {"field": "properties.name", "type": "nominal", "title": "State"},
       {
@@ -46,7 +46,8 @@
         "title": "McDonalds per Million Residents",
         "format": ".2f"
       },
-      {"field": "count", "type": "quantitative", "title": "Total McDonalds"}
+      {"field": "count", "type": "quantitative", "title": "Total McDonalds"},
+      {"field": "population", "type": "quantitative", "format": ""}
     ]
   },
   "config": {}
