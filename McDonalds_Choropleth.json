@@ -33,7 +33,7 @@
         "selection": "picked",
         "field": "count2",
         "type": "quantitative",
-        "scale": {"type": "threshold", "domain": [10, 30, 40, 45, 50, 55]},
+        "scale": {"type": "threshold", "domain": [10, 35, 40, 45, 50, 55]},
         "legend": {"title": "Count"}
       },
       "value": "gray"
